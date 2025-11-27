@@ -4,5 +4,7 @@
     {
         public int RecursoId { get; set; }
 
+        public string Nome { get; set; }
+
     }
 }
