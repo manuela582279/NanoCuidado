@@ -1,16 +1,19 @@
-﻿namespace NanoCuidado.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace NanoCuidado.Models
 {
     public class Exame
     {
         public int ExameId { get; set; }
-        [Required(ErrorMessage = "Digite o Nome da Conta")]
 
+        [Display(Name = "Descrição")]
+        [DataType(DataType.MultilineText)]
         public string Descricao { get; set; }
-        [Required(ErrorMessage = "Digite o Nome da Conta")]
+       
 
         [Required]
         [DataType(DataType.Currency)]
-        [Display(Name = "Preço de Custo")]
+        [Display(Name = "Preço")]
         public decimal Preco { get; set; }
         
 
