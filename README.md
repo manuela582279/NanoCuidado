@@ -75,4 +75,4 @@ Autenticação – acesso seguro com Identity
 
 ✔ Conclusão
 
-A Nano Cuidado oferece uma plataforma moderna e organizada para facilitar o acesso a nanorrobôs. O sistema centraliza informações, solicitações e processos administrativos, garantindo praticidade, segurança e eficiência para usuários e parceiros que utilizam tecnologias de nanorrobótica médica.
+A Nano Cuidado oferece uma plataforma desenvolvida para tornar o atendimento ao cliente mais ágil, transparente e eficiente. Nosso site centraliza informações, orientações e solicitações, garantindo que cada usuário tenha acesso rápido ao suporte necessário e a um acompanhamento organizado em todas as etapas do processo.
