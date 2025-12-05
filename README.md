@@ -20,7 +20,6 @@ Bootstrap
 Razor Views
 
 ⭐ Principais Funcionalidades
-Consultas
 
 Agendamentos voltados para avaliações, monitoramento e acompanhamento dos tratamentos baseados em nanotecnologia.
 
@@ -61,29 +60,6 @@ Layout limpo e responsivo
 Tipografia moderna
 
 Cards centralizados para melhor leitura
-
-📦 Instalação
-1. Clonar o Repositório
-git clone https://github.com/seu-repositorio/nano-cuidado.git
-2. Abrir o Projeto
-
-Abra o Visual Studio
-
-Carregue o arquivo .sln
-
-3. Configurar o Banco de Dados
-
-Ajuste a connection string no arquivo Web.config
-
-Se houver migrations:
-
-Update-Database
-4. Executar o Sistema
-
-Pressione F5
-ou
-
-Utilize IIS Express
 
 🗂 Estrutura do Sistema
 
