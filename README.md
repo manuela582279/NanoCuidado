@@ -1,4 +1,4 @@
-🧬 Nano Cuidado – Sistema Web para Clínica de Nanorrobótica Médica
+🧬 Nano Cuidado 
 
 O Nano Cuidado é um sistema web profissional desenvolvido em ASP.NET MVC para gerenciar uma clínica especializada no uso de nanorrobôs terapêuticos.
 Esses nanorrobôs atuam diretamente na corrente sanguínea para auxiliar no combate e prevenção de condições como colesterol elevado, AVC e infarto, oferecendo uma abordagem tecnológica avançada e monitorada.
