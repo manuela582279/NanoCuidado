@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Ícones Bootstrap -->
+	<link rel="stylesheet"
+		  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
+
+	<!-- Bootstrap 5 -->
+	<link rel="stylesheet"
+		  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
+
+	<!-- Bootstrap 3 (para grid antigo do exemplo) -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+	<!-- Chart.js -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+	<title>Painel Médico</title>
+
+	<!-- ===================== CSS EMBUTIDO ===================== -->
+	<style>
+		body {
+			background: #fafafa;
+			font-family: Arial, sans-serif;
+		}
+
+		.bloco {
+			background: #e0e0e0;
+			border-radius: 10px;
+			padding: 20px;
+			margin-bottom: 65px;
+		}
+
+		.titulo-bloco {
+			margin-top: 0;
+			font-weight: bold;
+			margin-bottom: 15px;
+		}
+
+		canvas {
+			width: 100% !important;
+			height: 140px !important;
+			margin-bottom: 15px;
+		}
+
+		/* Rodapé */
+		footer {
+			background-color: #e0d3b4;
+			color: #ffffff;
+			padding: 50px 0;
+		}
+
+			footer h5 {
+				color: #d4a257;
+			}
+
+			footer a {
+				color: #fff;
+				text-decoration: none;
+			}
+
+				footer a:hover {
+					text-decoration: underline;
+				}
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+
+			<!-- IMAGEM À ESQUERDA -->
+			<div class="col-sm-7">
+				<img src="~/img/imagem03.jpg" height="550px" width="100%">
+			</div>
+
+			<!-- GRÁFICOS À DIREITA -->
+			<div class="col-sm-4 col-sm-offset-1">
+
+				<!-- BLOCO 1: PRESSÃO ARTERIAL -->
+				<div class="bloco">
+					<h4 class="titulo-bloco">PRESSÃO ARTERIAL</h4>
+					<canvas id="graficoPressao"></canvas>
+					<p>
+						120/80 mmHg<br>
+						Normal: 90/60 – 120/80<br>
+						Última medição: 15/11/2025<br>
+						✅ <strong>Status: Normal</strong>
+					</p>
+				</div>
+
+				<!-- BLOCO 2: COLESTEROL -->
+				<div class="bloco">
+					<h4 class="titulo-bloco">NÍVEIS DE COLESTEROL</h4>
+					<canvas id="graficoColesterol"></canvas>
+					<p>
+						<strong>220 mg/dL</strong><br>
+						Faixas de referência:<br>
+						- Ideal: &lt;200<br>
+						- Alto: 200–239<br>
+						- Muito Alto: &gt;240<br>
+						Última medição: 14/11/2025<br>
+						⚠️ <strong>Status: Alto</strong>
+					</p>
+				</div>
+
+				<!-- BLOCO 3: RISCO CARDÍACO -->
+				<div class="bloco">
+					<h4 class="titulo-bloco">RISCO CARDÍACO</h4>
+					<canvas id="graficoRisco"></canvas>
+					<p>
+						Risco Cardíaco: <strong>ALTO</strong><br>
+						15% maior que média<br>
+						Baseado em 50+ fatores<br>
+						Consulte um especialista<br>
+						⚠️ <strong>Status: Alerta</strong>
+					</p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- ===================== GRÁFICOS CHART.JS ===================== -->
+	<script>
+		// GRAFICO 1: PRESSÃO ARTERIAL
+		new Chart(document.getElementById("graficoPressao"), {
+			type: "bar",
+			data: {
+				labels: ["Sistólica", "Diastólica"],
+				datasets: [{
+					label: "mmHg",
+					data: [120, 80],
+					backgroundColor: ["#4CAF50", "#2196F3"]
+				}]
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true,
+						max: 200
+					}
+				}
+			}
+		});
+
+		// GRAFICO 2: COLESTEROL
+		new Chart(document.getElementById("graficoColesterol"), {
+			type: "doughnut",
+			data: {
+				labels: ["Ideal", "Alto (Você)", "Muito Alto"],
+				datasets: [{
+					data: [180, 220, 260],
+					backgroundColor: ["#4CAF50", "#FFA000", "#D32F2F"],
+					hoverOffset: 4
+				}]
+			},
+			options: {
+				cutout: "70%",
+				plugins: { legend: { display: false } }
+			}
+		});
+
+		// GRAFICO 3: RISCO CARDÍACO
+		new Chart(document.getElementById("graficoRisco"), {
+			type: "doughnut",
+			data: {
+				labels: ["Normal", "Moderado", "ALTO (Você)"],
+				datasets: [{
+					data: [20, 30, 50],
+					backgroundColor: ["#4CAF50", "#FFC107", "#D32F2F"]
+				}]
+			},
+			options: {
+				cutout: "70%",
+				plugins: { legend: { display: false } }
+			}
+		});
+	</script>
+
+	<!-- ===================== RODAPÉ ===================== -->
+	<footer class="mt-5">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-3 mb-4">
+					<h5>Contato</h5>
+					<p>Rua Cap. José Ribeiro, 294<br>Jaú - SP, 17207-061</p>
+					<p>Telefone: (14) 9898-9898</p>
+					<p>WhatsApp: (14) 99999-9999</p>
+				</div>
+
+				<div class="col-md-3 mb-4">
+					<h5>Navegue Pelo Site</h5>
+					<ul class="list-unstyled">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Institucional</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 mb-4">
+					<h5>Serviços com Nanotecnologia</h5>
+					<ul class="list-unstyled">
+						<li><a href="#">Monitoramento inteligente da circulação</a></li>
+						<li><a href="#">Acompanhamento de saúde vascular</a></li>
+						<li><a href="#">Nanorrobôs auxiliares para limpeza preventiva</a></li>
+						<li><a href="#">Análise avançada de colesterol</a></li>
+						<li><a href="#">Avaliação personalizada com IA</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 mb-4">
+					<h5>Especialidades</h5>
+					<ul class="list-unstyled">
+						<li><a href="#">Suporte preventivo ao sistema circulatório*</a></li>
+						<li><a href="#">Bem-estar cardiovascular assistido por nanotecnologia*</a></li>
+						<li><a href="#">Tecnologia de micro-monitoramento contínuo*</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+			<hr style="border-color: rgba(255,255,255,0.2);">
+
+			<div class="text-center mt-3">
+				<p>"Tecnologia avançada ao seu lado — cuidando do seu bem-estar com precisão, inovação e segurança."</p>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

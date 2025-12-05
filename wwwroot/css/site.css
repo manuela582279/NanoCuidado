@@ -1,31 +1,66 @@
-html {
-  font-size: 14px;
+/* Banner */
+.hero-banner {
+    background-image: url("../img/ima1.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 55vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-bottom: 4px solid #c2b6b6;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    
+    background-image: url('../img/bannernanocuidado.png');
+    background-size: cover;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.hero-content {
+    position: relative;
+    color: #fff;
+    z-index: 2;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+/* CTA */
+.cta-container {
+    display: flex;
+    justify-content: center;
 }
 
-body {
-  margin-bottom: 60px;
+.cta-button {
+    background: linear-gradient(135deg, #e6e1e1, #c2b6b6);
+    color: rgb(211, 3, 27);
+    padding: 18px 40px;
+    border: none;
+    border-radius: 35px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+    .cta-button:hover {
+        background: linear-gradient(135deg, #d6d0d0, #b1a5a5);
+        transform: scale(1.05);
+    }
+
+/* Caixa de contexto */
+.context-box {
+    width: 70%;
+    background: #ffffff;
+    padding: 30px 35px;
+    margin: auto;
+    border-radius: 20px;
+    border-left: 6px solid rgb(211, 3, 27);
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
-}
+    .context-box p {
+        font-size: 17px;
+        line-height: 1.7;
+    }

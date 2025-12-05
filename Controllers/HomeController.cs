@@ -23,6 +23,16 @@ namespace NanoCuidado.Controllers
             return View();
         }
 
+        public IActionResult Institucional()
+        {
+            return View();
+        }
+
+        public IActionResult Dados()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

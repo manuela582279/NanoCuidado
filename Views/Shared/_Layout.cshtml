@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 	<title>@ViewData["Title"] - NanoCuidado</title>
 	<script type="importmap"></script>
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -13,42 +13,54 @@
 	<header>
 		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
 			<div class="container-fluid">
-				<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">NanoCuidado</a>
+				<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+					<img src="~/img/logo.png" alt="NanoCuidado Logo" style="height:95px;" />
+				</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
 						aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-					<ul class="navbar-nav flex-grow-1">
+					<ul class="navbar-nav mx-auto text-center gap-4">
 						<li class="nav-item">
 							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dados">Dados</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Exames" asp-action="Index">Exame</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Consultas" asp-action="Index">Consulta</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link text-dark" asp-area="" asp-controller="Pacientes" asp-action="Index">Pacientes</a>
 						</li>
 						<li class="nav-item">
-							<a href="https://google.com" class="nav-link text-dark">Institucional</a>
+							<a class="nav-link text-dark" asp-area="" asp-controller="Tratamentos" asp-action="Index">Tratamento</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Institucional">Institucional</a>
 						</li>
+
+
+
 					</ul>
 					<partial name="_LoginPartial" />
 				</div>
 			</div>
 		</nav>
 	</header>
-	<div class="container">
+	<div class="">
 		<main role="main" class="pb-3">
 			@RenderBody()
 		</main>
 	</div>
 
-	<footer class="border-top footer text-muted">
-		<div class="container">
-			&copy; 2025 - NanoCuidado - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-		</div>
-	</footer>
+
+
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="~/js/site.js" asp-append-version="true"></script>

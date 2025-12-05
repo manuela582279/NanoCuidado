@@ -1,50 +1,101 @@
 ﻿@model NanoCuidado.Models.Consulta
 
 @{
-    ViewData["Title"] = "Create";
+	ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<style>
+	body {
+		background: linear-gradient(to bottom, #F5E7C6, #CC795D);
+		min-height: 100vh;
+	}
 
-<h4>Consulta</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="PacienteId" class="control-label"></label>
-                <select asp-for="PacienteId" class ="form-control" asp-items="ViewBag.PacienteId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataHora" class="control-label"></label>
-                <input asp-for="DataHora" class="form-control" />
-                <span asp-validation-for="DataHora" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TratamentoId" class="control-label"></label>
-                <select asp-for="TratamentoId" class ="form-control" asp-items="ViewBag.TratamentoId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExameId" class="control-label"></label>
-                <select asp-for="ExameId" class ="form-control" asp-items="ViewBag.ExameId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Observacoes" class="control-label"></label>
-                <input asp-for="Observacoes" class="form-control" />
-                <span asp-validation-for="Observacoes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+	.card-form {
+		background: #ffffffdd;
+		width: 100%;
+		max-width: 500px;
+		padding: 30px;
+		border-radius: 20px;
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+		margin: 30px auto;
+	}
+
+	h1 {
+		text-align: center;
+		color: #8A4B38;
+		font-weight: bold;
+		margin-bottom: 20px;
+	}
+
+	.form-group label {
+		font-weight: 600;
+		color: #6b3a2f;
+	}
+
+	.form-control {
+		border-radius: 10px;
+		padding: 10px;
+		border: 1px solid #c9a28a;
+	}
+
+	.btn-registrar {
+		width: 100%;
+		background-color: #CC795D;
+		color: white;
+		border: none;
+		padding: 12px;
+		border-radius: 12px;
+		font-size: 18px;
+		font-weight: bold;
+		margin-top: 10px;
+		transition: 0.3s;
+	}
+
+		.btn-registrar:hover {
+			background-color: #b8624a;
+		}
+</style>
+
+<div class="card-form">
+
+	<h1>Cadastro do Paciente</h1>
+
+	<form asp-action="Create">
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+		<div class="form-group">
+			<label asp-for="PacienteId" class="control-label"></label>
+			<select asp-for="PacienteId" class="form-control" asp-items="ViewBag.PacienteId"></select>
+		</div>
+
+		<div class="form-group">
+			<label asp-for="DataHora" class="control-label"></label>
+			<input asp-for="DataHora" class="form-control" />
+		</div>
+
+		<div class="form-group">
+			<label asp-for="TratamentoId" class="control-label"></label>
+			<select asp-for="TratamentoId" class="form-control" asp-items="ViewBag.TratamentoId"></select>
+		</div>
+
+		<div class="form-group">
+			<label asp-for="ExameId" class="control-label"></label>
+			<select asp-for="ExameId" class="form-control" asp-items="ViewBag.ExameId"></select>
+		</div>
+
+		<div class="form-group">
+			<label asp-for="Observacoes" class="control-label"></label>
+			<input asp-for="Observacoes" class="form-control" />
+		</div>
+
+		<button type="submit" class="btn-registrar">Registro</button>
+	</form>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
 }

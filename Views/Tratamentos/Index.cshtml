@@ -1,53 +1,121 @@
 ﻿@model IEnumerable<NanoCuidado.Models.Tratamento>
 
 @{
-    ViewData["Title"] = "Index";
+	ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<style>
+	body {
+		background: linear-gradient(to bottom, #F5E7C6, #CC795D);
+		min-height: 100vh;
+		font-family: 'Segoe UI', sans-serif;
+		padding-top: 30px;
+	}
+
+	h1 {
+		text-align: center;
+		color: #8A4B38;
+		font-weight: bold;
+		margin-bottom: 25px;
+		font-size: 32px;
+	}
+
+	.btn-add {
+		display: block;
+		margin: 0 auto 20px auto;
+		background-color: #CC795D;
+		color: white !important;
+		font-weight: bold;
+		padding: 8px 20px;
+		border-radius: 10px;
+		border: none;
+		transition: 0.3s;
+		text-align: center;
+		width: 160px;
+	}
+
+		.btn-add:hover {
+			background-color: #b8624a;
+			color: white !important;
+		}
+
+	.table-card {
+		background: #ffffffdd;
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 25px;
+		border-radius: 20px;
+		box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+	}
+
+	table {
+		width: 100%;
+		text-align: center;
+		border-radius: 10px;
+		overflow: hidden;
+	}
+
+	thead {
+		background: #CC795D;
+		color: white;
+		font-weight: bold;
+	}
+
+	tbody tr:nth-child(even) {
+		background: #f7eee3;
+	}
+
+	tbody tr:nth-child(odd) {
+		background: #ffffff;
+	}
+
+	td, th {
+		padding: 12px;
+	}
+
+	a {
+		color: #8A4B38;
+		font-weight: bold;
+		text-decoration: none;
+	}
+
+		a:hover {
+			text-decoration: underline;
+		}
+</style>
+
+<h1>Adicione Abaixo</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+	<a asp-action="Create" class="btn-add">Criar novo</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Descricao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Preco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Exame)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Paciente)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Preco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Exame.ExameId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Paciente.PacienteId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TratamentoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TratamentoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TratamentoId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="table-card">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>@Html.DisplayNameFor(model => model.Descricao)</th>
+				<th>@Html.DisplayNameFor(model => model.Preco)</th>
+				<th>@Html.DisplayNameFor(model => model.Exame)</th>
+				<th>@Html.DisplayNameFor(model => model.Paciente)</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>@Html.DisplayFor(modelItem => item.Descricao)</td>
+					<td>@Html.DisplayFor(modelItem => item.Preco)</td>
+					<td>@Html.DisplayFor(modelItem => item.Exame.ExameId)</td>
+					<td>@Html.DisplayFor(modelItem => item.Paciente.PacienteId)</td>
+					<td>
+						<a asp-action="Edit" asp-route-id="@item.TratamentoId">Edit</a> |
+						<a asp-action="Details" asp-route-id="@item.TratamentoId">Details</a> |
+						<a asp-action="Delete" asp-route-id="@item.TratamentoId">Delete</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
