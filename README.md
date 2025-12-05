@@ -21,8 +21,6 @@ Razor Views
 
 ⭐ Principais Funcionalidades
 
-Agendamentos voltados para avaliações, monitoramento e acompanhamento dos tratamentos baseados em nanotecnologia.
-
 Exames
 
 Registro de exames gerais e análises relacionadas à atuação dos nanorrobôs no sistema cardiovascular.
