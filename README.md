@@ -37,10 +37,6 @@ Sessões de acompanhamento clínico
 
 (Conteúdo apenas administrativo, sem orientações clínicas.)
 
-Financeiro – Contas
-
-Controle de contas internas da clínica.
-
 Fornecedores
 
 Gestão de parceiros e empresas fornecedoras de tecnologia nanorrobótica.
