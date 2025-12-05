@@ -75,5 +75,4 @@ Autenticação – acesso seguro com Identity
 
 ✔ Conclusão
 
-O Nano Cuidado é um sistema administrativo moderno, projetado para apoiar clínicas que utilizam nanotecnologia médica, oferecendo controle eficiente, organização e confiabilidade em todos os processos internos.
-Ideal para aplicações profissionais, acadêmicas e demonstrações tecnológicas.
+A Nano Cuidado oferece uma plataforma moderna e organizada para facilitar o acesso e a aquisição de nanorrobôs terapêuticos. O sistema centraliza informações, solicitações e processos administrativos, garantindo praticidade, segurança e eficiência para usuários e parceiros que utilizam tecnologias de nanorrobótica médica.
