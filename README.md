@@ -37,10 +37,6 @@ Sessões de acompanhamento clínico
 
 (Conteúdo apenas administrativo, sem orientações clínicas.)
 
-Fornecedores
-
-Gestão de parceiros e empresas fornecedoras de tecnologia nanorrobótica.
-
 Autenticação e Segurança
 
 Login seguro e gerenciamento de usuários com ASP.NET Identity.
