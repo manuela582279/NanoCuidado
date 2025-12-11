@@ -1,0 +1,51 @@
+﻿@page
+@model IndexModel
+@{
+	ViewData["Title"] = "Perfil";
+	ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+	<div class="col-md-6">
+		<form id="profile-form" method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+			<div class="form-floating mb-3">
+				<input asp-for="Username" class="form-control" placeholder="Por favor, escolha seu nome de usuário." disabled />
+				<label asp-for="Username" class="form-label"></label>
+			</div>
+			<div class="form-floating mb-3">
+				<input asp-for="Input.PhoneNumber" class="form-control" placeholder="Por favor, insira seu número de telefone." />
+				<label asp-for="Input.PhoneNumber" class="form-label"></label>
+				<span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+			</div>
+			<style>
+				.btn-nano {
+					background: linear-gradient(to right, #F5E7C6, #CC795D);
+					color: #2b2b2b;
+					font-weight: 600;
+					border: none;
+					border-radius: 12px;
+					padding: 12px 20px;
+					transition: 0.25s ease;
+				}
+
+					.btn-nano:hover {
+						background: linear-gradient(to right, #F0D9A6, #B86A4E);
+						transform: translateY(-2px);
+						box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+					}
+			</style>
+
+			<button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-nano">
+				Salvar
+			</button>
+
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

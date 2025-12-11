@@ -1,0 +1,57 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+@{
+	var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<style>
+	.nano-menu {
+		background: #ffffffcc;
+		padding: 20px;
+		border-radius: 20px;
+		box-shadow: 0px 4px 18px rgba(0,0,0,0.1);
+		backdrop-filter: blur(6px);
+	}
+
+		.nano-menu .nav-link {
+			font-weight: 600;
+			color: #5A2E17;
+			border-radius: 12px;
+			margin-bottom: 8px;
+			transition: 0.3s ease;
+			padding: 10px 15px;
+		}
+
+			.nano-menu .nav-link:hover,
+			.nano-menu .nav-link.active {
+				background: linear-gradient(to right, #F5E7C6, #CC795D);
+				color: #fff !important;
+				box-shadow: 0px 3px 10px rgba(0,0,0,0.15);
+			}
+</style>
+
+<ul class="nav nav-pills flex-column nano-menu">
+	<li class="nav-item">
+		<a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)"
+		   id="profile" asp-page="./Index">Meu Perfil</a>
+	</li>
+
+	<li class="nav-item">
+		<a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)"
+		   id="email" asp-page="./Email">Alterar Email</a>
+	</li>
+
+	<li class="nav-item">
+		<a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)"
+		   id="change-password" asp-page="./ChangePassword">Alterar Senha</a>
+	</li>
+
+	@if (hasExternalLogins)
+	{
+		<li class="nav-item">
+			<a class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)"
+			   id="external-login" asp-page="./ExternalLogins">Logins Externos</a>
+		</li>
+	}
+
+
+</ul>

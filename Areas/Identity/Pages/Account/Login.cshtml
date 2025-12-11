@@ -1,0 +1,119 @@
+﻿@page
+@model LoginModel
+
+@{
+	ViewData["Title"] = "Entrar";
+}
+
+<style>
+	body {
+		background: linear-gradient(to bottom, #F5E7C6, #CC795D);
+		min-height: 100vh;
+		font-family: 'Segoe UI', sans-serif;
+	}
+
+	.login-container {
+		max-width: 420px;
+		margin: 60px auto;
+		background: #ffffffcc;
+		padding: 30px;
+		border-radius: 20px;
+		box-shadow: 0px 4px 25px rgba(0,0,0,0.15);
+		backdrop-filter: blur(8px);
+	}
+
+	.login-title {
+		font-weight: 700;
+		color: #8B5A2B;
+		text-align: center;
+		margin-bottom: 10px;
+	}
+
+	.login-subtitle {
+		text-align: center;
+		color: #5a4230;
+		margin-bottom: 25px;
+		font-size: 15px;
+	}
+
+	.btn-nano {
+		background: #8B5A2B;
+		color: #fff;
+		border-radius: 12px;
+		transition: 0.3s;
+	}
+
+		.btn-nano:hover {
+			background: #a36932;
+			color: #fff;
+			transform: scale(1.02);
+		}
+
+	a {
+		color: #8B5A2B;
+		font-weight: 600;
+	}
+
+		a:hover {
+			color: #a36932;
+		}
+</style>
+
+<div class="login-container">
+	<h2 class="login-title">Entrar no NanoCuidado</h2>
+	<p class="login-subtitle">Acesse sua conta e continue cuidando da sua saúde</p>
+
+	<form id="account" method="post">
+		<div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+		<div class="form-floating mb-3">
+			<input asp-for="Input.Email" class="form-control" autocomplete="username" placeholder="nome@exemplo.com" />
+			<label asp-for="Input.Email">Email</label>
+			<span asp-validation-for="Input.Email" class="text-danger"></span>
+		</div>
+
+		<div class="form-floating mb-3">
+			<input asp-for="Input.Password" class="form-control" autocomplete="current-password" placeholder="Senha" />
+			<label asp-for="Input.Password">Senha</label>
+			<span asp-validation-for="Input.Password" class="text-danger"></span>
+		</div>
+
+		<div class="form-check mb-3">
+			<input class="form-check-input" asp-for="Input.RememberMe" />
+			<label asp-for="Input.RememberMe" class="form-check-label">
+				Lembrar de mim
+			</label>
+		</div>
+
+		<button id="login-submit" type="submit" class="btn btn-nano w-100 btn-lg">
+			Entrar
+		</button>
+
+		<div class="mt-4 text-center">
+			<p><a asp-page="./ForgotPassword">Esqueceu a senha?</a></p>
+			<p><a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Criar nova conta</a></p>
+			<p><a asp-page="./ResendEmailConfirmation">Reenviar confirmação de email</a></p>
+		</div>
+	</form>
+
+	@if ((Model.ExternalLogins?.Count ?? 0) > 0)
+	{
+		<hr />
+		<div class="text-center">
+			<p>Entrar com:</p>
+		</div>
+
+		<form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+			@foreach (var provider in Model.ExternalLogins!)
+			{
+				<button type="submit" class="btn btn-outline-dark w-100 mb-2" name="provider" value="@provider.Name">
+					@provider.DisplayName
+				</button>
+			}
+		</form>
+	}
+</div>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

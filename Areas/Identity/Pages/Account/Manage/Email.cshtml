@@ -1,0 +1,66 @@
+﻿@page
+@model EmailModel
+@{
+	ViewData["Title"] = "Gerenciar Email";
+	ViewData["ActivePage"] = ManageNavPages.Email;
+}
+
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+	<div class="col-md-6">
+		<form id="email-form" method="post">
+			<div asp-validation-summary="All" class="text-danger" role="alert"></div>
+
+			@if (Model.IsEmailConfirmed)
+			{
+				<div class="form-floating mb-3 input-group">
+					<input asp-for="Email" class="form-control" placeholder="Por favor, insira seu e-mail." disabled />
+					<div class="input-group-append">
+						<span class="h-100 input-group-text text-success font-weight-bold">✓</span>
+					</div>
+					<label asp-for="Email" class="form-label"></label>
+				</div>
+			}
+
+		</form>
+
+
+
+		<div class="form-floating mb-3">
+			<input asp-for="Email" class="form-control" placeholder="Por favor, insira seu e-mail." disabled />
+			<label asp-for="Email" class="form-label"></label>
+			<button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Enviar e-mail de verificação</button>
+		</div>
+
+		<div class="form-floating mb-3">
+			<input asp-for="Input.NewEmail" class="form-control" autocomplete="email" aria-required="true" placeholder="Por favor, insira seu novo e-mail." />
+			<label asp-for="Input.NewEmail" class="form-label"></label>
+			<span asp-validation-for="Input.NewEmail" class="text-danger"></span>
+		</div>
+		<style>
+			.btn-nano {
+				background: linear-gradient(to right, #F5E7C6, #CC795D);
+				color: #2b2b2b;
+				font-weight: 600;
+				border: none;
+				border-radius: 12px;
+				padding: 12px 20px;
+				transition: 0.25s ease;
+			}
+
+				.btn-nano:hover {
+					background: linear-gradient(to right, #F0D9A6, #B86A4E);
+					transform: translateY(-2px);
+					box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+		</style>
+
+		<button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-nano">
+			Gerenciar Email
+		</button>
+	</div>
+</div>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,121 @@
+﻿@page
+@model RegisterModel
+@{
+	ViewData["Title"] = "Criar Conta";
+}
+
+<style>
+	body {
+		background: linear-gradient(to bottom, #F5E7C6, #CC795D);
+		min-height: 100vh;
+		font-family: 'Segoe UI', sans-serif;
+	}
+
+	.register-container {
+		max-width: 420px;
+		margin: 60px auto;
+		background: #ffffffcc;
+		padding: 30px;
+		border-radius: 20px;
+		box-shadow: 0px 4px 25px rgba(0,0,0,0.15);
+		backdrop-filter: blur(8px);
+	}
+
+	.register-title {
+		font-weight: 700;
+		color: #8B5A2B;
+		text-align: center;
+		margin-bottom: 10px;
+	}
+
+	.register-subtitle {
+		text-align: center;
+		color: #5a4230;
+		margin-bottom: 25px;
+		font-size: 15px;
+	}
+
+	.btn-nano {
+		background: #8B5A2B;
+		color: #fff;
+		border-radius: 12px;
+		transition: 0.3s;
+		padding: 12px;
+		font-size: 18px;
+	}
+
+		.btn-nano:hover {
+			background: #a36932;
+			color: #fff;
+			transform: scale(1.02);
+		}
+
+	a {
+		color: #8B5A2B;
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+		a:hover {
+			color: #a36932;
+		}
+</style>
+
+<div class="register-container">
+	<h2 class="register-title">@ViewData["Title"]</h2>
+	<p class="register-subtitle">Crie sua conta para acessar o NanoCuidado</p>
+
+	<form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+		<div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+		<div class="form-floating mb-3">
+			<input asp-for="Input.Email" class="form-control" autocomplete="username" placeholder="email@exemplo.com" />
+			<label asp-for="Input.Email">Email</label>
+			<span asp-validation-for="Input.Email" class="text-danger"></span>
+		</div>
+
+		<div class="form-floating mb-3">
+			<input asp-for="Input.Password" class="form-control" autocomplete="new-password" placeholder="Senha" />
+			<label asp-for="Input.Password">Senha</label>
+			<span asp-validation-for="Input.Password" class="text-danger"></span>
+		</div>
+
+		<div class="form-floating mb-3">
+			<input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" placeholder="Confirmar senha" />
+			<label asp-for="Input.ConfirmPassword">Confirmar senha</label>
+			<span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+		</div>
+
+		<button id="registerSubmit" type="submit" class="btn btn-nano w-100">
+			Criar Conta
+		</button>
+	</form>
+
+	@if ((Model.ExternalLogins?.Count ?? 0) > 0)
+	{
+		<hr />
+		<div class="text-center mb-3">
+			Ou registre-se usando:
+		</div>
+
+		<form id="external-account"
+			  asp-page="./ExternalLogin"
+			  asp-route-returnUrl="@Model.ReturnUrl"
+			  method="post">
+
+			@foreach (var provider in Model.ExternalLogins!)
+			{
+				<button type="submit"
+						class="btn btn-outline-dark w-100 mb-2"
+						name="provider"
+						value="@provider.Name">
+					@provider.DisplayName
+				</button>
+			}
+		</form>
+	}
+</div>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
